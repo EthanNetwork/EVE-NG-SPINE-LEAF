@@ -1,0 +1,198 @@
+asbr01(config)#do show running-config
+Building configuration...
+
+
+Current configuration : 4350 bytes
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname asbr01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name office.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username ethangrishin privilege 15 secret 9 $9$7ocWYJ3GMfYG0f$KFyLMLTGPEwJyUtI.nJqVuLtGV4owxwyYFLkSuHosL.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.1.1.2 255.255.255.255
+ ip ospf message-digest-key 1 md5 github1
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 10.10.10.2 255.255.255.0
+ standby version 2
+ standby 10 ip 10.10.10.3
+ standby 10 priority 254
+ ip ospf message-digest-key 1 md5 github1
+ ip ospf priority 254
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 10.20.20.2 255.255.255.0
+ standby version 2
+ standby 20 ip 10.20.20.3
+ standby 20 priority 254
+ ip ospf message-digest-key 1 md5 github1
+ ip ospf priority 254
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 10.30.30.2 255.255.255.0
+ standby version 2
+ standby 30 ip 10.30.30.3
+ standby 30 priority 255
+ ip ospf message-digest-key 1 md5 github1
+ ip ospf priority 255
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/1
+ ip address dhcp
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ auto-cost reference-bandwidth 100000
+ area 0 authentication message-digest
+ passive-interface GigabitEthernet0/1
+ default-information originate
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+ip access-list extended sshmanage
+ permit tcp 10.1.1.0 0.0.0.255 any eq 22
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class sshmanage in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 924
+ access-class sshmanage in
+ logging synchronous
+ login local
+ transport input ssh
+!
+no scheduler allocate
+!
+end

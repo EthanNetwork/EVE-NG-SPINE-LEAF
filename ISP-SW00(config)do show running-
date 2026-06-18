@@ -1,0 +1,323 @@
+ISP-SW00(config)#do show running-config
+Building configuration...
+
+Current configuration : 3404 bytes
+!
+! Last configuration change at 07:34:27 UTC Thu Jun 18 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname ISP-SW00
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username ethangrishin privilege 15 secret 5 $1$MTl9$kazKC2Yg32JX3ItzmJb8r0
+no aaa new-model
+!
+!
+!
+!
+!
+!
+ip dhcp excluded-address 22.22.22.0 22.22.22.1
+!
+ip dhcp pool client
+ network 22.22.22.0 255.255.255.248
+ default-router 22.22.22.1
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ no switchport
+ ip address 22.22.22.1 255.255.255.248
+ shutdown
+!
+interface GigabitEthernet0/0
+ no switchport
+ no ip address
+ shutdown
+ negotiation auto
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ shutdown
+ negotiation auto
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ negotiation auto
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner incoming ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner login ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 1500
+ logging synchronous
+ login local
+ transport input ssh
+!
+!
+end
+
+ISP-SW00(config)#ip domain-name isp.com
+ISP-SW00(config)#crypto key generate rsa modulus 2048
+The name for the keys will be: ISP-SW00.isp.com
+
+% The key modulus size is 2048 bits
+% Generating 2048 bit RSA keys, keys will be non-exportable...
+[OK] (elapsed time was 1 seconds)
+
+ISP-SW00(config)#ip ssh version 2
+ISP-SW00(config)#do wr mem
+Building configuration...
+Compressed configuration from 3444 bytes to 1982 bytes[OK]
+ISP-SW00(config)#
+*Jun 18 07:47:21.520: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Jun 18 07:47:22.221: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+ISP-SW00(config)#do show running-config
+Building configuration...
+
+Current configuration : 3444 bytes
+!
+! Last configuration change at 07:34:27 UTC Thu Jun 18 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname ISP-SW00
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username ethangrishin privilege 15 secret 5 $1$MTl9$kazKC2Yg32JX3ItzmJb8r0
+no aaa new-model
+!
+!
+!
+!
+!
+!
+ip dhcp excluded-address 22.22.22.0 22.22.22.1
+!
+ip dhcp pool client
+ network 22.22.22.0 255.255.255.248
+ default-router 22.22.22.1
+!
+!
+ip domain-name isp.com
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ no switchport
+ ip address 22.22.22.1 255.255.255.248
+ shutdown
+!
+interface GigabitEthernet0/0
+ no switchport
+ no ip address
+ shutdown
+ negotiation auto
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ shutdown
+ negotiation auto
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ negotiation auto
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner incoming ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner login ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 1500
+ logging synchronous
+ login local
+ transport input ssh
+!
+!
+end
+
