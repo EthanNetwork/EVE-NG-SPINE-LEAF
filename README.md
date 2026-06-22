@@ -147,7 +147,7 @@ All leaf access ports (`Gi1/0`–`Gi1/3`) are hardened:
 | STP mode             | Rapid-PVST with loopguard default                 |
 | errdisable recovery  | Enabled for psecure-violation, dhcp-rate-limit, arp-inspection |
 
-Uplink-facing port-channels have DAI trust and DHCP snooping trust set to prevent false-positive drops on inter-switch traffic.
+Uplink-facing port-channels have DAI trust and DHCP snooping trust set to prevent drops on inter-switch traffic.
 
 ---
 
@@ -157,7 +157,7 @@ Uplink-facing port-channels have DAI trust and DHCP snooping trust set to preven
 - **VTY ACL (`sshmanage`)** — restricts SSH access to the `10.1.1.0/24` loopback management block on all devices except ISP-SW00
 - **Console / VTY** — `login local`, `logging synchronous`
 - **CDP/LLDP** — disabled on ASBR ISP-facing interfaces (`Gi0/1`) to limit information exposure upstream
-- **Credentials** — `username ethangrishin privilege 15`; secrets stored as type 5 (leaf/spine/ISP) and type 9 (ASBRs)
+- **Credentials** — `username ethangrishin privilege 15`; OSPF secret configured as md5
 
 ---
 
