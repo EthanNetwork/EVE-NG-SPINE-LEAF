@@ -156,6 +156,7 @@ Uplink-facing port-channels have DAI trust and DHCP snooping trust set to preven
 - **SSH v2 only** — all devices; ciphers locked to AES-CTR variants
 - **VTY ACL (`sshmanage`)** — restricts SSH access to the `10.1.1.0/24` loopback management block on all devices except ISP-SW00
 - **Console / VTY** — `login local`, `logging synchronous`
+- **Passive Interaces** - uplinks to the ISP are passive to prevent adjacency formation with ISP devices and rely on direct connections in the routing table
 - **CDP/LLDP** — disabled on ASBR ISP-facing interfaces (`Gi0/1`) to limit information exposure upstream
 - **Credentials** — `username ethangrishin privilege 15`; OSPF secret configured as md5
 
