@@ -156,7 +156,6 @@ Uplink-facing port-channels have DAI trust and DHCP snooping trust set to preven
 - **SSH v2 only** — all devices; ciphers locked to AES-CTR variants
 - **VTY ACL (`sshmanage`)** — restricts SSH access to the `10.1.1.0/24` loopback management block on all devices except ISP-SW00
 - **Console / VTY** — `login local`, `logging synchronous`
-- **HTTP/HTTPS** — disabled on ASBRs; enabled on spine and leaf (lab access)
 - **CDP/LLDP** — disabled on ASBR ISP-facing interfaces (`Gi0/1`) to limit information exposure upstream
 - **Credentials** — `username ethangrishin privilege 15`; secrets stored as type 5 (leaf/spine/ISP) and type 9 (ASBRs)
 
@@ -177,7 +176,4 @@ Uplink-facing port-channels have DAI trust and DHCP snooping trust set to preven
 └── leaf02show_running-config
 ```
 
----
 
-
-## Lab Platform
