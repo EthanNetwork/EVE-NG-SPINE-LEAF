@@ -173,6 +173,10 @@ interface GigabitEthernet1/3
  spanning-tree bpduguard enable
  ip dhcp snooping limit rate 300
 !
+interface Vlan10
+ ip address 10.10.10.48 255.255.255.0
+ ip helper-address 10.10.10.14
+!
 ip forward-protocol nd
 !
 ip http server
