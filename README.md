@@ -158,7 +158,7 @@ Uplink-facing port-channels have DAI trust and DHCP snooping trust set to preven
 - **Console / VTY** — `login local`, `logging synchronous`
 - **Passive Interaces** - uplinks to the ISP are passive to prevent adjacency formation with ISP devices and rely on direct connections in the routing table
 - **CDP/LLDP** — disabled on ASBR ISP-facing interfaces (`Gi0/1`) to limit information exposure upstream
-- **Credentials** — `username ethangrishin privilege 15`; OSPF secret configured as md5
+- **Credentials** — `username ethangrishin privilege 15 secret github1`; OSPF secret configured as md5 ; local credentials on the device ensure that even after connecting TACACS or RADIUS services the device can be logged into in case of failure of auth service
 
 ---
 
