@@ -39,7 +39,7 @@ leaf02  Gi1/0–Gi1/3  ──► access ports (VLAN 30)
 
 | Hostname   | Role              | IOS Version | Loopback0       |
 |------------|-------------------|-------------|-----------------|
-| ISP-SW00   | ISP edge switch   | 15.2        | —               |
+| ISP-SW00   | ISP edge switch   | 15.2        | 22.22.22.1/29 interface               |
 | asbr00     | ASBR / edge router| 15.9        | 10.1.1.1/32     |
 | asbr01     | ASBR / edge router| 15.9        | 10.1.1.2/32     |
 | spine00    | Distribution / L3 | 15.2        | 10.1.1.5/32     |
