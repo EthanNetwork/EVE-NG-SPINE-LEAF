@@ -31,7 +31,7 @@ ip dhcp excluded-address 10.20.20.0 10.20.20.100
 ip dhcp excluded-address 10.30.30.0 10.30.30.100
 !
 ip dhcp pool pool10
- network 10.255.255.0 255.0.0.0
+ network 10.10.10.0 255.0.0.0
  default-router 10.10.10.14
  dns-server 1.1.1.1
  domain-name office.com
