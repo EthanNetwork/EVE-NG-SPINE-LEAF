@@ -111,7 +111,7 @@ Preempt is enabled on spine SVIs. The HSRP VIPs are the `ip helper-address` targ
 
 ## EtherChannel
 
-All spine-to-leaf uplinks use static `channel-group mode on` (no LACP/PAgP negotiation). Each leaf bundles two physical links per spine into a single Port-channel (Po1 → spine00, Po2 → spine01), giving every leaf a dual-homed active/active uplink to both distribution switches.
+All spine-to-leaf uplinks use static `channel-group mode on` (no LACP/PAgP negotiation was not a design decision but a software limitation as IOSv images frequently fail to correctly time LACP negotiations). Each leaf bundles two physical links per spine into a single Port-channel (Po1 → spine00, Po2 → spine01), giving every leaf a dual-homed active/active uplink to both distribution switches.
 
 Trunk configuration on all Port-channels and uplink interfaces:
 
