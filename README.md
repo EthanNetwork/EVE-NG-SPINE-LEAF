@@ -13,8 +13,8 @@ ISP-SW00
   ├── Gi0/0 ──► asbr00 Gi0/1   (uplink to ISP)
   └── Gi0/1 ──► asbr01 Gi0/1   (uplink to ISP)
 
-asbr00 Gi0/0 ──► spine00 Gi0/0   (ROAS trunk)
-asbr01 Gi0/0 ──► spine01 Gi0/0   (ROAS trunk)
+asbr00 Gi0/0 ──► spine00 Gi0/0   
+asbr01 Gi0/0 ──► spine01 Gi0/0   
 
 spine00
   ├── Po1 (Gi0/1, Gi0/2) ──► leaf00 Po1   (dual EtherChannel)
@@ -42,8 +42,8 @@ leaf02  Gi1/0–Gi1/3  ──► access ports (VLAN 30)
 | ISP-SW00   | ISP edge switch   | 15.2        | 22.22.22.1/29 interface               |
 | asbr00     | ASBR / edge router| 15.9        | 10.1.1.1/32     |
 | asbr01     | ASBR / edge router| 15.9        | 10.1.1.2/32     |
-| spine00    | Distribution / L3 | 15.2        | 10.1.1.5/32     |
-| spine01    | Distribution / L3 | 15.2        | 10.1.1.6/32     |
+| spine00    | Distribution ABR / L3 | 15.2        | 10.1.1.5/32     |
+| spine01    | Distribution ABR / L3 | 15.2        | 10.1.1.6/32     |
 | leaf00     | Access switch     | 15.2        | 10.1.1.22/32    |
 | leaf01     | Access switch     | 15.2        | 10.1.1.23/32    |
 | leaf02     | Access switch     | 15.2        | 10.1.1.24/32    |
